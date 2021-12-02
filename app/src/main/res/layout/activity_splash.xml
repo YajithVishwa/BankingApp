@@ -1,9 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#F6EBEB"
     tools:context=".SplashActivity">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <TextView
+        android:id="@+id/text_logo"
+        android:text="Banking With You"
+        android:textSize="30sp"
+        android:textColor="@color/black"
+        android:textAlignment="center"
+        android:textStyle="bold"
+        android:layout_centerInParent="true"
+        android:textAllCaps="false"
+        android:textColorHighlight="@color/teal_200"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="sans-serif-medium"
+        android:visibility="visible" />
+    <ImageView
+        android:layout_width="100dp"
+        android:layout_marginTop="20dp"
+        android:tint="@color/black"
+        android:background="@drawable/ic_arrow"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/text_logo"
+        android:layout_height="100dp"/>
+
+</RelativeLayout>
