@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
@@ -58,43 +59,49 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAd
                 }
                 else
                 {
-                    AlertDialog.Builder alert = new AlertDialog.Builder(context);
-                    EditText edittext = new EditText(context);
-                    edittext.setInputType(InputType.TYPE_CLASS_NUMBER);
-                    alert.setMessage("Enter Your Amount");
-                    alert.setTitle("Transfer Money");
-                    TextView textView=new TextView(context);
-                    textView.setText("From "+fromname+" to "+myDataModel.name);
-                    alert.setView(textView);
-                    alert.setView(edittext);
-                    alert.setPositiveButton("Transfer", new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int whichButton) {
-                            String amt = edittext.getText().toString();
-                            myDatabase.tranfer(myDataModel.name,fromname, Float.parseFloat(amt));
-                            dialog.dismiss();
+                    if(fromname.equalsIgnoreCase(myDataModel.name))
+                    {
+                        Toast.makeText(context, "Self Transfer not allowed", Toast.LENGTH_SHORT).show();
+                    }
+                    else {
+                        AlertDialog.Builder alert = new AlertDialog.Builder(context);
+                        EditText edittext = new EditText(context);
+                        edittext.setInputType(InputType.TYPE_CLASS_NUMBER);
+                        alert.setMessage("Enter Your Amount");
+                        alert.setTitle("Transfer Money");
+                        TextView textView = new TextView(context);
+                        textView.setText("From " + fromname + " to " + myDataModel.name);
+                        alert.setView(textView);
+                        alert.setView(edittext);
+                        alert.setPositiveButton("Transfer", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int whichButton) {
+                                String amt = edittext.getText().toString();
+                                myDatabase.tranfer(myDataModel.name, fromname, Float.parseFloat(amt));
+                                dialog.dismiss();
 
-                            AlertDialog.Builder builder=new AlertDialog.Builder(context);
-                            builder.setMessage("Money Transfered Successfully");
-                            builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
-                                @Override
-                                public void onClick(DialogInterface dialog, int which) {
-                                    activity.finish();
-                                    dialog.dismiss();
-                                }
-                            });
-                            AlertDialog alertDialog=builder.create();
-                            alertDialog.show();
+                                AlertDialog.Builder builder = new AlertDialog.Builder(context);
+                                builder.setMessage("Money Transfered Successfully");
+                                builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        activity.finish();
+                                        dialog.dismiss();
+                                    }
+                                });
+                                AlertDialog alertDialog = builder.create();
+                                alertDialog.show();
 
-                        }
-                    });
+                            }
+                        });
 
-                    alert.setNegativeButton("No", new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int whichButton) {
-                            dialog.cancel();
-                        }
-                    });
+                        alert.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int whichButton) {
+                                dialog.cancel();
+                            }
+                        });
 
-                    alert.show();
+                        alert.show();
+                    }
 
 
                 }

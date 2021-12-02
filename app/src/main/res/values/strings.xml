@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">My Banking App</string>
+    <string name="app_name">Banking with you</string>
     <string name="title_activity_view_customer">ViewCustomerActivity</string>
     <!-- Strings used for fragments for navigation -->
     <string name="first_fragment_label">First Fragment</string>

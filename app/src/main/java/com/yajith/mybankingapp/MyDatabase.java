@@ -23,11 +23,15 @@ public class MyDatabase extends SQLiteOpenHelper {
     {
         String sql_query="INSERT INTO Customer(Name,CurrentBal) VALUES " +
                 "('Yajith',1000)," +
-                "('Vishwa',2000)," +
+                "('Vishwa',3000)," +
                 "('Tommy',5000)," +
-                "('Sweety',10000)," +
-                "('Cutie',40000)," +
-                "('Simba',35000);";
+                "('Ram',5000)," +
+                "('Sammy',7000)," +
+                "('Sugan',9000)," +
+                "('Lavan',1000)," +
+                "('Dhinesh',4000)," +
+                "('Bose',2000)," +
+                "('Simba',3500);";
         db.execSQL(sql_query);
     }
     public ArrayList<MyDataModel> getAllCustomer()
